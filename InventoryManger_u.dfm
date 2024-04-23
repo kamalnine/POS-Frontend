@@ -10,6 +10,7 @@ object frmInventoryManager: TfrmInventoryManager
   Font.Height = -12
   Font.Name = 'Segoe UI'
   Font.Style = []
+  OnClick = FormClick
   OnCreate = FormCreate
   TextHeight = 15
   object Label1: TLabel

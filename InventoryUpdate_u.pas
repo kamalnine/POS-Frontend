@@ -82,10 +82,11 @@ implementation
 procedure TForm2.BtnSubmitClick(Sender: TObject);
 var
   JsonRequest: TJSONObject;
+  IdHTTP1: TIdHTTP;
+  ResponseContent: string;
 begin
   // Create a JSON object containing the updated contact information
-id := IntToStr(FSelectedID);
-
+  id := IntToStr(FSelectedID);
 
   JsonRequest := TJSONObject.Create;
   JsonRequest.AddPair('productCode', edtProductCode1.Text);
@@ -103,11 +104,9 @@ id := IntToStr(FSelectedID);
   // Set the request method to PUT
   RESTRequest2.Method := rmPUT;
 
-
   // Set the query parameter 'id' with the value from the form
   RESTRequest2.Params.Clear;
- RESTRequest2.Params.AddItem('id',id, TRESTRequestParameterKind.pkQUERY, [poDoNotEncode]);
-
+  RESTRequest2.Params.AddItem('id',id, TRESTRequestParameterKind.pkQUERY, [poDoNotEncode]);
 
   // Execute the request
   RESTRequest2.Execute;
@@ -115,18 +114,26 @@ id := IntToStr(FSelectedID);
   // Check for errors
   if RESTResponse2.StatusCode = 200 then
   begin
+    showMessage('Task Updates Successfully');
 
+    // Re-fetch the products data after successfully updating
+    IdHTTP1 := TIdHTTP.Create(nil);
+    try
+      // Make the GET request to fetch the updated product data
+      ResponseContent := IdHTTP1.Get('http://localhost:5063/api/Product');
+      close;
 
-     showMessage('Task Updates Sucessfully');
+      // Display the updated product data or handle it as required
+      // For example, you can parse the response JSON and update UI elements
 
+      // Handle the response content here
+    finally
+      IdHTTP1.Free;
+    end;
   end
-
-
-
   else
     ShowMessage('Failed to update contact information: ' + RESTResponse2.Content);
 end;
-
 
 
 

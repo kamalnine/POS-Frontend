@@ -331,9 +331,8 @@ begin
   begin
     // Extract the selected item from the list box
     ItemString := lstPrice.Items[lstPrice.ItemIndex];
-    ShowMessage(ItemString);
     Parts := ItemString.Split(['|']);
-    showMessage(Parts[1]);
+
 
     // Split the item string to extract the price part
     PricePart := Parts[1];
@@ -341,8 +340,8 @@ begin
     // Convert the price part to a floating-point number
     if TryStrToFloat(PricePart, PricePerUnit) then
     begin
-      // Display the extracted PricePerUnit for testing
-      ShowMessage(PricePart);
+
+
 
       // Prompt the user to confirm the quantity to remove
       if InputQuery('Confirm Quantity', 'Enter the quantity to remove:', ConfirmQuantity) then
@@ -470,7 +469,7 @@ begin
           EditTotal.Text := FloatToStr(Total);
 
           // Add the product name, price per unit, and quantity to the list box
-          lstPrice.Items.Add(Format('%s  |   %s   |      %d      |     %d', [ProductName, PricePerUnit, Quantity,ProductID]));
+          lstPrice.Items.Add(Format('%s  |   %s   |    %d      |     %d', [ProductName, PricePerUnit, Quantity,ProductID]));
         end
         else
           ShowMessage('Invalid price per unit format.');

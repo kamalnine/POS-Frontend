@@ -25,15 +25,16 @@ type
     procedure SubmitClick(Sender: TObject);
     procedure edtSearchChange(Sender: TObject);
     procedure Button1Click(Sender: TObject);
+    procedure FormClick(Sender: TObject);
   private
     { Private declarations }
     ClientDataSet: TClientDataSet;
-    procedure DisplayProducts(const ProductsArray: TJSONArray);
     procedure HandleException(const Msg: string; E: Exception);
     procedure FetchProducts(const Category: string);
   public
     { Public declarations }
     id: Integer;
+    procedure DisplayProducts(const ProductsArray: TJSONArray);
   end;
 
 var
@@ -176,6 +177,11 @@ begin
   finally
     IdHTTP1.Free;
   end;
+end;
+
+procedure TfrmInventoryManager.FormClick(Sender: TObject);
+begin
+FetchProducts('');
 end;
 
 procedure TfrmInventoryManager.FormCreate(Sender: TObject);
