@@ -6,7 +6,7 @@ uses
   Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
   Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Data.DB, Datasnap.DBClient, Vcl.Grids, Vcl.DBGrids, IdBaseComponent,
   IdComponent, IdTCPConnection, IdTCPClient, IdHTTP, System.JSON, InventoryUpdate_u,
-  Vcl.StdCtrls;
+  Vcl.StdCtrls,AllOrders_u;
 
 type
   TfrmInventoryManager = class(TForm)
@@ -18,6 +18,7 @@ type
     edtSearch: TEdit;
     Label2: TLabel;
     Button1: TButton;
+    Button2: TButton;
     procedure FormCreate(Sender: TObject);
     procedure DBGrid1CellClick(Column: TColumn);
      procedure DBGrid1DrawColumnCell(Sender: TObject; const Rect: TRect; DataCol: Integer; Column: TColumn;
@@ -26,6 +27,7 @@ type
     procedure edtSearchChange(Sender: TObject);
     procedure Button1Click(Sender: TObject);
     procedure FormClick(Sender: TObject);
+    procedure Button2Click(Sender: TObject);
   private
     { Private declarations }
     ClientDataSet: TClientDataSet;
@@ -130,6 +132,11 @@ end;
 procedure TfrmInventoryManager.Button1Click(Sender: TObject);
 begin
 Close;
+end;
+
+procedure TfrmInventoryManager.Button2Click(Sender: TObject);
+begin
+frmAllOrders.Show;
 end;
 
 procedure TfrmInventoryManager.DBGrid1CellClick(Column: TColumn);

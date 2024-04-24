@@ -13,7 +13,8 @@ uses
   GlobalData_u in 'GlobalData_u.pas' {Form3},
   Gmail_u in 'Gmail_u.pas' {Form4},
   ShowCustomerPurchaseItem_u in 'ShowCustomerPurchaseItem_u.pas' {Form5},
-  Logout_u in 'Logout_u.pas' {Form6};
+  Logout_u in 'Logout_u.pas' {Form6},
+  AllOrders_u in 'AllOrders_u.pas' {frmAllOrders};
 
 {$R *.res}
 
@@ -32,5 +33,6 @@ begin
   Application.CreateForm(TForm4, Form4);
   Application.CreateForm(TForm5, Form5);
   Application.CreateForm(TForm6, Form6);
+  Application.CreateForm(TfrmAllOrders, frmAllOrders);
   Application.Run;
 end.

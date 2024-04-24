@@ -66,13 +66,22 @@ object frmInventoryManager: TfrmInventoryManager
     OnChange = edtSearchChange
   end
   object Button1: TButton
-    Left = 344
+    Left = 24
     Top = 367
     Width = 75
     Height = 25
     Caption = 'Logout'
     TabOrder = 4
     OnClick = Button1Click
+  end
+  object Button2: TButton
+    Left = 536
+    Top = 367
+    Width = 153
+    Height = 25
+    Caption = 'Show All Orders'
+    TabOrder = 5
+    OnClick = Button2Click
   end
   object IdHTTP1: TIdHTTP
     ProxyParams.BasicAuthentication = False
